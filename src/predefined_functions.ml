@@ -198,10 +198,8 @@ let number { Context_node.node; trail; _ } value =
 ;;
 
 let sum _ node_set =
-  Map.sum
-    (module Float)
-    node_set
-    ~f:(fun node -> Node.string_value node |> Value.string |> Value.Cast.to_number)
+  Map.sum (module Float) node_set ~f:(fun node ->
+    Node.string_value node |> Value.string |> Value.Cast.to_number)
 ;;
 
 let floor _ value = Float.round_down value
